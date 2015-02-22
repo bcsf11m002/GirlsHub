@@ -1,0 +1,21 @@
+﻿@model Girls_Hub.Models.Admin
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <center><h1>Admin Login</h1></center>
+        <div class="form-group" style="margin-top:200px;">
+            @using (Html.BeginForm("verify", "Admin", FormMethod.Post))
+            {
+                @Html.Label("Name", new { @class = "col-md-2", style = "font-size:large;margin-top:20px" })@Html.TextBoxFor(model => model.Name, new { name = "Name", style = "margin-top:13px", @class = "form-control" })@Html.ValidationMessageFor(m=>m.Name)<br />
+                @Html.Label("Password", new { @class = "col-md-2", style = "font-size:large;margin-top:20px" })@Html.TextBoxFor(model => model.Password, new { name = "Password", style = "margin-top:13px", @class = "form-control" })@Html.ValidationMessageFor(m=>m.Password)<br />
+                <center><button class="btn btn-default" style="margin-top:13px;">Login</button></center>
+            }
+        </div>
+    </div>
+</body>
+</html>

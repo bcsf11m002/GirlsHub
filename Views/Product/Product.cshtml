@@ -1,0 +1,131 @@
+﻿@model Girls_Hub.Models.Product
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li style="left:-15px;">@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li style="left:-10px;">@Html.ActionLink("About", "About", "Home")</li>
+                    <li style="left:-5px;">@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li style="left:759px;">@Html.ActionLink("Register", "Register", "Account")</li>
+                    <li style="left:759px;">@Html.ActionLink("Log in", "Login", "Account")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="panel-group" id="accordion" style="margin-top:20px;">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion"
+                       href="#collapseOne">
+                        <b>Add A new Product</b>
+                    </a>
+                </h2>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <div class="form-group">
+                        @using (Html.BeginForm("add", "Product", FormMethod.Post,new { enctype = "multipart/form-data" }))
+                        { 
+                            <label style="font-size:large;margin-top:20px"> Product's image: </label><br/><input type="file" name="image" />
+                            @Html.Label("Title", new { @class = "col-md-2", style = "font-size:large;margin-top:20px" })@Html.TextBoxFor(model => model.Title, new { name = "Title", style = "margin-top:13px", @class = "form-control" })<br />
+                            @Html.Label("Category", new { @class = "col-md-2", style = "font-size:large;margin-top:20px" })
+                            <select name="Category" style="margin-top:20px;width:300px;">
+                                <option selected="selected">Select Category</option>
+                                <option>1. Jacket</option>
+                                <option>2. Clothes</option>
+                                <option>3. Watch</option>
+                                <option>4. Coat</option>
+                                <option>5. Sweater</option>
+                                <option>6. Eastern Dress</option>
+                                <option>7. Accessories</option>
+                            </select><br /><br />
+                            @Html.Label("Description", new { @class = "col-md-2", style = "font-size:large;margin-top:18px" })@Html.TextAreaFor(model => model.Description, new { name = "Description", style = "margin-top:13px", @class = "form-control", @rows = "3" })<br />
+                            @Html.Label("Cost", new { @class = "col-md-2", style = "font-size:large;margin-top:20px" })@Html.TextBoxFor(model => model.Cost, new { name = "Cost", style = "margin-top:13px", @class = "form-control", @type = "number" })<br />
+                            <center><button class="btn btn-default" style="margin-top:13px;">Add</button></center>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion"
+                       href="#collapseTwo">
+                        <b>View Products</b>
+                    </a>
+                </h2>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="form-group">
+                        @using (Html.BeginForm("GetProduct", "Product", FormMethod.Post))
+                        {
+                            <center><button id="b1" class="btn btn-default" style="margin-top:13px;">View</button></center>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion"
+                       href="#collapseThree">
+                        <b>Delete A Product</b>
+                    </a>
+                </h2>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="form-group">
+                        @using (Html.BeginForm("DeleteProduct", "Product", FormMethod.Post))
+                        {
+                            <center><button class="btn btn-default" style="margin-top:13px;">Delete</button></center>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion"
+                       href="#collapsefour">
+                        <b>Update A Product</b>
+                    </a>
+                </h2>
+            </div>
+            <div id="collapsefour" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="form-group">
+                        @using (Html.BeginForm("UpdateProduct", "Product", FormMethod.Post))
+                        {
+                            <center><button class="btn btn-default" style="margin-top:13px;">Update</button></center>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <br />
+            @Html.ActionLink("Back", "Admin", "Admin")
+        </div>
+    </div>
+</body>
+</html>

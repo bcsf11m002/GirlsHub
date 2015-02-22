@@ -1,0 +1,69 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+    <div id="header">
+        <h1>View the Products</h1>
+    </div>
+    <div style="margin-top:200px;">
+        <table border="5" align="center">
+            <tr>
+                <td>ID</td>
+                <td>TITLE</td>
+                <td>IMAGE</td>
+                <td>CATEGORY</td>
+                <td>DESCRIPTION</td>
+                <td>COST</td>
+            </tr>
+            @foreach (var m in Model)
+            {
+                <tr>
+                    <td>@m.Id</td>
+                    <td>@m.Title</td>
+                    @if (@m.CategoryId == 1)
+                    {
+                        <td><div>Jacket</div></td>
+                    }
+                    @if (@m.CategoryId == 2)
+                    {
+                        <td><div>Clothes</div></td>
+                    }
+                    @if (@m.CategoryId == 3)
+                    {
+                        <td><img src="@ViewBag.x[0]" class="col-md-5" style="width: 500px; height:450px;" /></td>
+                        <td><div>Watch</div></td>
+                    }
+                    @if (@m.CategoryId == 4)
+                    {
+                        <td><img src="@ViewBag.x[1]" class="col-md-5" style="width: 500px; height:450px;" /></td>
+                        <td><div>Coat</div></td>
+                    }
+                    @if (@m.CategoryId == 5)
+                    {
+                        <td><img src="@ViewBag.x[2]" class="col-md-5" style="width: 500px; height:450px;" /></td>
+                        <td><div>Sweater</div></td>
+                    }
+                    @if (@m.CategoryId == 6)
+                    {
+                        <td><div>Eastern Dress</div></td>
+    
+                    }
+                    @if (@m.CategoryId == 7) 
+                    {
+                        <td><div>Accessories</div></td>
+                    }
+                    <td>@m.Description</td>
+                    <td>@m.Cost</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div>
+        <br />
+        @Html.ActionLink("Back", "Product", "Product")
+    </div>
+</body>
+</html>

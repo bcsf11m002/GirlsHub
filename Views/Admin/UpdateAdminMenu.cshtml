@@ -1,0 +1,18 @@
+﻿@model Girls_Hub.Models.Admin
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+    <div id="header">
+        <h1>Update a Admin</h1>
+    </div>
+    <form action="/Admin/UpdateAdminConfirm/@Model.Id" method="post" style="margin-top:200px">
+        @Html.Label("Name", new { @class = "col-md-2", style = "font-size:large;margin-top:20px" })@Html.TextBoxFor(model => model.Name, new { name = "Name", style = "margin-top:13px", @class = "form-control" })<br />
+        @Html.Label("Password", new { @class = "col-md-2", style = "font-size:large;margin-top:20px" })@Html.TextBoxFor(model => model.Password, new { name = "Password", style = "margin-top:13px", @class = "form-control" })<br />
+        <center><button class="btn btn-default" style="margin-top:13px;">Update</button></center>
+    </form>
+</body>
+</html>

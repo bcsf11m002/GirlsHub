@@ -1,0 +1,33 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+    <div id="header">
+        <h1>Update a Product</h1>
+    </div>
+    <div style="margin-top:200px;">
+        <table border="5" align="center">
+            <tr>
+                <td>ID</td>
+                <td>TITLE</td>
+            </tr>
+            @foreach (var m in Model)
+            {
+                <tr>
+                    <td>@m.Id</td>
+                    <td>
+                        <a href="/Product/UpdateProductMenu/@m.Id">Update "@m.Title"</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div>
+        <br />
+        @Html.ActionLink("Back", "Product", "Product")
+    </div>
+</body>
+</html>

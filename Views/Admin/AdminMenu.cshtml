@@ -1,0 +1,159 @@
+﻿@model Girls_Hub.Models.Admin
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link href="../../StyleSheet.css" rel="stylesheet" />
+    <script src='<%= Url.Content("~/scripts/jquery-1.7.1.js") %>'></script>
+    <script src='<%= Url.Content("~/scripts/jquery.validate.js") %>'></script>
+    <script src='<%= Url.Content("~/scripts/jquery.validate.unobtrusive.js") %>'></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li style="left:-15px;">@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li style="left:-10px;">@Html.ActionLink("About", "About", "Home")</li>
+                    <li style="left:-5px;">@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li style="left:759px;">@Html.ActionLink("Register", "Register", "Account")</li>
+                    <li style="left:759px;">@Html.ActionLink("Log in", "Login", "Account")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="panel-group" id="accordion" style="margin-top:20px;">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion"
+                       href="#collapseOne">
+                        <b>Add A new Admin</b>
+                    </a>
+                </h2>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <div class="form-group">
+                        @using (Html.BeginForm("addAdmin", "Admin", FormMethod.Post))
+                        {
+                            @Html.Label("Name", new { @class = "col-md-2", style = "font-size:large;margin-top:20px" })@Html.TextBoxFor(model => model.Name, new { name = "n", id = "n", style = "margin-top:13px", @class = "form-control" })@Html.ValidationMessageFor(m=>m.Name)<br />
+                            @Html.Label("Password", new { @class = "col-md-2", style = "font-size:large;margin-top:20px" })@Html.TextBoxFor(model => model.Password, new { name = "Password", style = "margin-top:13px", @class = "form-control" })@Html.ValidationMessageFor(m=>m.Password)<br />
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <center><input type="button" id="b1" class="btn btn-default" value="Check Admin Availability" /><br /><div id="result"></div></center>
+                                </div>
+                            </div>
+                            <div class="form-group" id="d" >
+                                <center>
+                                    <div class="col-md-offset-2 col-md-10">
+                                    </div>
+                                </center>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion"
+                       href="#collapseTwo">
+                        <b>View Admins</b>
+                    </a>
+                </h2>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="form-group">
+                        @using (Html.BeginForm("GetAdmin", "Admin", FormMethod.Post))
+                        {
+                            <center><button id="b1" class="btn btn-default" style="margin-top:13px;">View</button></center>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion"
+                       href="#collapseThree">
+                        <b>Delete a Admin</b>
+                    </a>
+                </h2>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="form-group">
+                        @using (Html.BeginForm("DeleteAdmin", "Admin", FormMethod.Post))
+                        {
+                            <center><button class="btn btn-default" style="margin-top:13px;">Delete</button></center>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion"
+                       href="#collapseFour">
+                        <b>Update a Admin</b>
+                    </a>
+                </h2>
+            </div>
+            <div id="collapseFour" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="form-group">
+                        @using (Html.BeginForm("UpdateAdmin", "Admin", FormMethod.Post))
+                        {
+                            <center><button class="btn btn-default" style="margin-top:13px;">Update</button></center>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <br />
+            @Html.ActionLink("Back", "Admin", "Admin")
+        </div>
+    </div>
+</body>
+</html>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+
+        $(document).ready(function () {
+
+            $('#b1').click(function () {
+
+                var userName = $('#n').val();
+                $.getJSON("/admin/CheckAdminName?n=" + userName, function (data) {
+                    if (data) {
+                        $('#result').text("Admin already exists in database. Add a new Admin name and password");
+                    }
+                    else {
+                        var button = '<input type="submit" class="btn btn-default" value="Add" id="submit_button"/>';
+                        $('#d').append(button);
+                        $('#d').on('click', '#submit_button', function () {
+                            alert("New Admin has been added.");
+                        });
+                    }
+                });
+
+            });
+
+        });
+    </script>
+}

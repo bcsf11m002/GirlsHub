@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Coats</title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li style="left:-15px;"><a href="/home">Home</a></li>
+                    <li style="left:-10px;"><a href="/home/About">About</a></li>
+                    <li style="left:-5px;"><a href="/home/Contact">Contact</a></li>
+                    <li style="left:759px;"><a href="/account/Register">Register</a></li>
+                    <li style="left:759px;"><a href="/account/Login">Log in</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <img src="/coats/cimage.jpg" class="col-md-2" style="height: 163px;" />
+            <div class="col-md-10">
+                <center><h1 style="font-size: 100px; font-family: 'Comic Sans MS'; background-color: lightgray; margin-top: -85px; padding-bottom: 0.37em; padding-top: 0.16em; margin-left: 14px; width: 920px; padding-right: 3.3em;">Coats</h1></center>
+            </div>
+        </div>
+        <div class="row">
+            <ul class="col-md-2" style="list-style-type:none;font-family:'Comic Sans MS';font-size:large;">
+                <li style="padding-top: 50px;">@Html.ActionLink("Jackets", "Jackets", "Jackets")</li>
+                <li style="padding-top: 30px;">@Html.ActionLink("Clothes", "Clothes", "Clothes")</li>
+                <li style="padding-top: 30px;">@Html.ActionLink("Watches", "Watches", "Watches")</li>
+                <li style="padding-top: 30px;">@Html.ActionLink("Coats", "Coats", "Coats")</li>
+                <li style="padding-top: 30px;">@Html.ActionLink("Sweaters", "Sweaters", "Sweaters")</li>
+                <li style="padding-top: 30px;">@Html.ActionLink("Eastern Dresses", "EasternDresses", "EasternDresses")</li>
+                <li style="padding-top: 30px;">@Html.ActionLink("Accessories", "Accessories", "Accessories")</li>
+            </ul>
+            <img src="/coats/c5.png" class="col-md-5" style="width: 500px; height:450px;top:25px;float:left;padding-left:150px;" />
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" style="top:128px;font-size:medium;">Quantity</label>
+                        <div class="col-md-9">
+                            <input type="number" placeholder="Quantity" style="margin-top:126px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" style="top:50px;font-size:medium;">Size</label>
+                        <div class="col-md-9 dropdown">
+                            <select name="mydropdown" id="mydrop" style="margin-top:50px;width:174px;">
+                                <option>Small</option>
+                                <option selected="selected">Medium</option>
+                                <option>Large</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <center><button class="btn btn-default btn-lg" type="submit" style="background-color: lightgray; margin-top: 50px; ">Add to Cart    <span class="glyphicon glyphicon-shopping-cart"></span> </button></center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+
+</body>
+</html>
+

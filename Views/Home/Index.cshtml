@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "Girl's Hub";
+}
+@model Girls_Hub.Models.Product
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#b1").on('click',function () {
+                var n = $("#search1").val();
+                $.getJSON("/Home/searchProduct?name="+n, function (name) {
+                    if (name == "jackets" || name == "Jackets" || name == "jacket" || name == "Jacket") {
+                        $("#div2").remove();
+                        $("#div1").load("/jackets/Jackets");
+                    }
+                    if (name == "clothes" || name == "Clothes" || name == "cloth" || name == "Cloth") {
+                        $("#div2").remove();
+                        $("#div1").load("/clothes/Clothes");
+                    }
+                    if (name == "watches" || name == "Watches" || name == "watch" || name == "Watch") {
+                        $("#div2").remove();
+                        $("#div1").load("/watches/Watches");
+                    }
+                    if (name == "coats" || name == "Coats" || name == "coat" || name == "Coat") {
+                        $("#div2").remove();
+                        $("#div1").load("/coats/Coats");
+                    }
+                    if (name == "sweaters" || name == "Sweaters" || name == "sweater" || name == "Sweater") {
+                        $("#div2").remove();
+                        $("#div1").load("/sweaters/Sweaters");
+                    }
+                    if (name == "eastern dresses" || name == "Eastern dresses" || name == "eastern dress" || name == "Eastern dress") {
+                        $("#div2").remove();
+                        $("#div1").load("/easterndresses/EasternDresses");
+                    }
+                    if (name == "accessories" || name == "Accessories" || name == "accessory" || name == "Accessory") {
+                        $("#div2").remove();
+                        $("#div1").load("/accessories/Accessories");
+                    }
+                });
+            });
+         });
+    </script>
+</head>
+<body>
+<div class="container body-content">
+    <img src="Capture.png" height="630" width="1110" />
+    <h1 style="top:50px;"><b>GIRLS HUB</b></h1>
+    <ul class="nav nav-pills" style="position: absolute; left: 440px; top: 160px; font-size:large; text-decoration-color:red; ">
+        <li role="presentation">@Html.ActionLink("Jackets", "Jackets", "Jackets")</li>
+        <li role="presentation">@Html.ActionLink("Clothes", "Clothes", "Clothes")</li>
+        <li role="presentation">@Html.ActionLink("Watches", "Watches", "Watches")</li>
+        <li role="presentation">@Html.ActionLink("Coats", "Coats", "Coats")</li>
+        <li role="presentation">@Html.ActionLink("Sweaters", "Sweaters", "Sweaters")</li>
+        <li role="presentation">@Html.ActionLink("Eastern Dresses", "EasternDresses", "EasternDresses")</li>
+        <li role="presentation">@Html.ActionLink("Accessories", "Accessories", "Accessories")</li>
+        <li style="left:480px;">
+            @using (Html.BeginForm())
+            {
+                @Html.TextBox("Search", "",new { id="search1", placeholder = "Search", @required = "", @type = "text" })
+                <button type="button" id="b1"><span class="glyphicon glyphicon-search"></span></button>
+            }
+        </li>
+    </ul>
+</div>
+    <div id="div1">
+        <div id="div2" class="col-md-10">
+            <div class="row">
+                @Html.Raw(@Html.ActionLink("[replacetext]", "/jackets/Jackets", "Jackets").ToHtmlString().Replace("[replacetext]", "<img src=\"/jackets/Jimage.png\" class=\"col-md-3\" style=\"left: 130px; height: 250px;\" />"))
+                @Html.Raw(@Html.ActionLink("[replacetext]", "/clothes/Clothes", "Clothes").ToHtmlString().Replace("[replacetext]", "<img src=\"/clothes/Cimage.jpg\" class=\"col-md-3\" style=\"left: 210px; height: 250px;\" />"))
+                @Html.Raw(@Html.ActionLink("[replacetext]", "/watches/Watches", "Watches").ToHtmlString().Replace("[replacetext]", "<img src=\"/watches/Wimage.jpg\" class=\"col-md-3\" style=\"left: 310px; height: 250px;\" />"))
+            </div>
+            <div class="row">
+                @Html.Raw(@Html.ActionLink("[replacetext]", "/coats/Coats", "Coats").ToHtmlString().Replace("[replacetext]", "<img src=\"/coats/cimage.jpg\" class=\"col-md-3\" style=\"left: 130px; height: 250px;margin-top: 50px;\" />"))
+                @Html.Raw(@Html.ActionLink("[replacetext]", "/sweaters/Sweaters", "Sweaters").ToHtmlString().Replace("[replacetext]", "<img src=\"/sweaters/Simage.jpg\" class=\"col-md-3\" style=\"left: 210px; height: 250px;margin-top: 50px;\" />"))
+                @Html.Raw(@Html.ActionLink("[replacetext]", "/easternDresses/EasternDresses", "EasternDresses").ToHtmlString().Replace("[replacetext]", "<img src=\"/dresses/Eimage.png\" class=\"col-md-3\" style=\"left: 310px; height: 250px;margin-top: 50px;\" />"))
+            </div>
+            <div class="row">
+                @Html.Raw(@Html.ActionLink("[replacetext]", "/accessories/Accessories", "Accessories").ToHtmlString().Replace("[replacetext]", "<img src=\"/accessories/Aimage.jpg\" class=\"col-md-3\" style=\"left: 130px; height: 250px;margin-top: 50px;\" />"))
+            </div>
+        </div>
+    </div>
+</body>
+</html>

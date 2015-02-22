@@ -1,0 +1,30 @@
+﻿@model Girls_Hub.Models.Product
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+    <div id="header">
+        <h1>Update a Product</h1>
+    </div>
+    <form action="/Product/UpdateProductConfirm/@Model.Id" method="post" style="margin-top:200px">
+        @Html.Label("Title", new { @class = "col-md-2", style = "font-size:large;margin-top:20px" })@Html.TextBoxFor(model => model.Title, new { name = "Title", style = "margin-top:13px", @class = "form-control" })<br />
+        @Html.Label("Category", new { @class = "col-md-2", style = "font-size:large;margin-top:20px" })
+        <select name="Category" style="margin-top:20px;width:300px;">
+            <option selected="selected">Select Category</option>
+            <option>1. Jacket</option>
+            <option>2. Clothes</option>
+            <option>3. Watch</option>
+            <option>4. Coat</option>
+            <option>5. Sweater</option>
+            <option>6. Eastern Dress</option>
+            <option>7. Accessories</option>
+        </select><br /><br />
+        @Html.Label("Description", new { @class = "col-md-2", style = "font-size:large;margin-top:18px" })@Html.TextAreaFor(model => model.Description, new { name = "Description", style = "margin-top:13px", @class = "form-control", @rows = "3" })<br />
+        @Html.Label("Cost", new { @class = "col-md-2", style = "font-size:large;margin-top:20px" })@Html.TextBoxFor(model => model.Cost, new { name = "Cost", style = "margin-top:13px", @class = "form-control", @type = "number" })<br />
+        <center><button class="btn btn-default" style="margin-top:13px;">Update</button></center>
+    </form>
+</body>
+</html>
